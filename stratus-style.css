@@ -258,7 +258,6 @@ body {
 a { 
     color: {{ linkColor }}; 
     text-decoration: none;   
-    {{ transition("all .4s ease") }} 
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 a:hover, a:focus { 
@@ -405,9 +404,6 @@ q:before, q:after, blockquote:before, blockquote:after {}
     top: 0px;
     width: 100%;
     z-index: 999;
-}
-.header-container {
-      padding: 25px 30px 0px 15px;
 }
 
 /* Logo */
@@ -1189,13 +1185,6 @@ q:before, q:after, blockquote:before, blockquote:after {}
     list-style-type: none; 
 
 }
-.custom-menu-primary .hs-menu-wrapper > ul li a:hover{
-  color:{{ aColorHover }};
-}
-.custom-menu-primary .hs-menu-wrapper > ul > li > a{
-    padding: 0px 0;
-    margin: 0 2px 0 2px !important;
-}
 
 /* Child List */
 .hs-menu-wrapper.hs-menu-flow-horizontal.flyouts>ul li.hs-item-has-children ul.hs-menu-children-wrapper {
@@ -1227,7 +1216,7 @@ q:before, q:after, blockquote:before, blockquote:after {}
 }
 
 /* Fix menu disappearing on desktop after toggling mobile menu */
-@media screen and (min-width:767px) {
+@media screen and (min-width:898px) {
     .custom-menu-primary .hs-menu-wrapper { 
         display:block !important;
     }
@@ -1264,7 +1253,7 @@ q:before, q:after, blockquote:before, blockquote:after {}
     display: none; /* Hide button on Desktop */
 }
 
-@media (max-width: 767px){
+@media (max-width: 897px){
 
 
   /* Variables
@@ -1316,12 +1305,12 @@ q:before, q:after, blockquote:before, blockquote:after {}
   .mobile-trigger{
     display: inline-block !important; /* Show button on mobile */
     cursor: pointer; /* Mouse pointer type on hover */
-    position: absolute; /*******************************************/
-    top: 43px;          /* Position Button at right of screen  */
-    right: 20px;        /*******************************************/
+    position: fixed; /*******************************************/
+    top: calc((49px - 14px - 16px) / 2);/* Brand Bar Height - padding top & bottom - trigger height then divide by 2 to centre it  */
+    right: 10px;        /*******************************************/
     width: auto; /* Button width */
     height: auto; /* Button height */      
-    padding: 7px 10px 8px 10px;
+    padding: 7px 10px;
   /*  background: #ffffff; /* Background color 
     border: 1px solid {{ menuColorMobile }};*/
     font-size: 16px;
@@ -1335,13 +1324,6 @@ q:before, q:after, blockquote:before, blockquote:after {}
     z-index: 9999;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     background-color: #FDBD10;
-  }
-  .mobile-trigger:hover{
-    text-decoration: none; /* Removes link text underline on button */
-    color:{{ aColorHoverMobile }};
-   /* background-color: {{ menuColorMobile }}; */
-    border-color: transparent;
-    background-color: transparent;
   }
 
   /* Change button when menu is open */
@@ -1458,9 +1440,9 @@ q:before, q:after, blockquote:before, blockquote:after {}
   .custom-menu-primary .hs-menu-wrapper{
     width: 100%;
     position: fixed; /**************************************************************/
-    top: 0;             /* Positions the menu to drop from the very top of the screen */
+    top: 49px;             /* Positions the menu to drop from the very top of the screen */
     left: 0;          /**************************************************************/
-    padding: 80px 0 0;
+    padding: 0px;
     margin: 0;
     z-index: 99;
   }
@@ -2595,10 +2577,6 @@ a#hs-button_module_16335864518377478:hover {
 
 /*-------------------------- Menu --------------------------------------------*/
 
-ul li.hs-menu-item a:hover {
-    background: #FDBD10 !important;
-    color: #fff !important;
-}
 /* .span4.widget-span.widget-type-custom_widget.mylogo {
     display: none;
 } */
@@ -2613,31 +2591,23 @@ ul.active-branch {
     display: table-row;
 }
 ul li.hs-menu-item a {
-    min-height: 124px;
     display: flex;
     align-items: center !important;
-    max-height: 124px !important;
     justify-content: center;
     text-align: center;
     font-size: 16px !important;
-    padding: 5px 30px 0 30px !important;
+    padding: 20px 30px !important;
     margin: 0 auto;
 }
 ul li.hs-menu-item {
-    display: inline-block !important;
+    display: inline-flex !important;
 }
-li.hs-menu-item.hs-menu-depth-1 {
-    height: 124px !important;
-}
+
 li.hs-menu-item.hs-menu-depth-1.active.active-branch {
      background: #FDBD10!important;
      color: #000000 !important;
 /*   border-bottom: 10px solid #FDBD10 !important; */
 } 
-.active-branch li.hs-menu-item a:hover{
-background: #FDBD10!important;
-    color: #000000 !important;
-}
 
 /* .span4.widget-span.widget-type-custom_widget.mylogo {
     width: 15% !important;
@@ -2731,123 +2701,60 @@ background: #b50000!important;
 } */
 /*-------------------------- End Menu --------------------------------------------*/
 
-/* =====================  Menu Media Quary ====================================== */
-
-/* @media only screen and (max-width: 1500px) {
-ul li.hs-menu-item a {
-    padding: 5px 28px 0 28px !important;
-}
+.header-container .span12 {
+  min-height: unset;
 }
 
-
-@media only screen and (min-width: 1200px) {
-ul li.hs-menu-item a {
-    padding: 5px 12px 0 12px !important;
+.header-container .custom-menu-primary ul {
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  margin: 0px;
 }
 
-} */
-
-/* @media only screen and (max-width: 1500px) and (min-width: 1200px)  {
-ul li.hs-menu-item a {
-    padding: 5px 28px 0 28px !important;
+.header-container-wrapper {
+  position: sticky;
+  top: 49px; /* Undeneath brand bar */
 }
 
-} */
-@media only screen and (min-width: 1601px) {
-ul li.hs-menu-item a {
-    padding: 5px 35px 0 35px !important;
-    font-size: 16px !important;
+body.mobile-open .mobile-trigger i {
+  background-color: rgb(254, 189, 18);
 }
 
-#hs_cos_wrapper_module_1650291104829111 {
-    padding-top: 35px !important;
-}
-}
-
-@media only screen and (max-width: 1600px) {
-ul li.hs-menu-item a {
-    padding: 5px 20px 0 20px !important;
-    font-size: 16px !important;
-}
-
-#hs_cos_wrapper_module_1650291104829111 {
-    padding-top: 35px !important;
-}
-}
-
-@media only screen and (max-width: 1500px) {
-ul li.hs-menu-item a {
-    padding: 5px 24px 0 24px !important;
+body.mobile-open .mobile-trigger i::before {
+  transform: translateY(5.5px) rotateZ(45deg);
 }
   
-#hs_cos_wrapper_module_1650291104829111 {
-    padding-top: 35px !important;
-}
-}
-
-@media only screen and (max-width: 1400px) {
-ul li.hs-menu-item a {
-    padding: 5px 12px 0 12px !important;
+body.mobile-open .mobile-trigger i::after {
+  transform: translateY(-6.5px) rotateZ(-45deg);
 }
 
-#hs_cos_wrapper_module_1650291104829111 {
-    padding-top: 42px !important;
-}
-}
-
-@media only screen and (max-width: 1200px) {
-ul li.hs-menu-item a {
-    padding: 5px 12px 0 12px !important;
-    font-size: 14px !important;
+.mobile-trigger i,
+.mobile-trigger i::before,
+.mobile-trigger i::after {
+  {{ transition("all 0.25s ease-in-out") }}
 }
 
-#hs_cos_wrapper_module_1650291104829111 {
-    padding-top: 44px !important;
-}
-}
-
-@media only screen and (max-width: 1080px) {
-ul li.hs-menu-item a {
-    padding: 0px 8px 0 8px !important;
-    font-size: 10px !important;
-}
-
-#hs_cos_wrapper_module_1650291104829111 {
-    padding-top: 46px !important;
-}
-}
-
-@media only screen and (max-width: 768px) {
-ul li.hs-menu-item a {
-    padding: 0px 6px 0 6px !important;
-    font-size: 10px !important;
-}
-
-}
-
-@media only screen and (max-width: 480px) {
+@media (max-width: 1195px) {
   ul li.hs-menu-item a {
-  min-height: unset !important;
-  font-size: 15px !important;
-}
-.span4.widget-span.widget-type-custom_widget.mylogo {
-    width: 70% !important;
-}
-ul li.hs-menu-item {
-  display: block !important;
-} 
-  .row-fluid [class*="span"] {
-  min-height: unset !important;
+    padding: 20px 20px !important;
   }
-  .mobile-trigger:hover i, .mobile-trigger:hover i:before, .mobile-trigger:hover i:after, .mobile-open .mobile-trigger i, .mobile-open .mobile-trigger i:before, .mobile-open .mobile-trigger i:after {
-    background-color: #FDBD10;
-}
-  li.hs-menu-item.hs-menu-depth-1 {
-    height: 30% !important; 
-}
-  #hs_cos_wrapper_module_1650291104829111 {
-    padding-top: 30px !important;
-}
 }
 
-/*-------------------- End Menu Media Quary ---------------------------------*/
+@media (max-width: 1075px) {
+  ul li.hs-menu-item a {
+    padding: 20px 15px !important;
+  }
+}
+
+@media (max-width: 995px) {
+  ul li.hs-menu-item a {
+    font-size: 14px !important;
+  }
+}
+
+@media (max-width: 897px) {
+  ul li.hs-menu-item a {
+    padding: 10px !important;
+  }
+}
